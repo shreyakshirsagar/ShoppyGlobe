@@ -11,6 +11,8 @@ const ProductItem = ({ product }) => {
     e.preventDefault();
     e.stopPropagation();
     dispatch(addToCart(product));
+    // Show success feedback
+    console.log(`${product.title} added to cart!`);
   };
 
   return (
