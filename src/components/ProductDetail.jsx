@@ -15,6 +15,8 @@ const ProductDetail = () => {
 
   const handleAddToCart = () => {
     dispatch(addToCart(product));
+    // Show success notification
+    alert(`${product.title} added to cart successfully!`);
   };
 
   const handleGoBack = () => {
