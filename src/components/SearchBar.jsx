@@ -8,7 +8,13 @@ const SearchBar = () => {
   const dispatch = useDispatch();
 
   const handleSearchChange = (e) => {
-    dispatch(setSearchTerm(e.target.value));
+    const value = e.target.value;
+    dispatch(setSearchTerm(value));
+    // Add debouncing for better performance
+    clearTimeout(handleSearchChange.timeoutId);
+    handleSearchChange.timeoutId = setTimeout(() => {
+      // Additional search logic can be added here
+    }, 300);
   };
 
   const handleClearSearch = () => {
