@@ -7,7 +7,7 @@ const CartItem = ({ item }) => {
   const dispatch = useDispatch();
 
   const handleQuantityChange = (newQuantity) => {
-    if (newQuantity >= 1) {
+    if (newQuantity >= 1 && newQuantity <= 99) {
       dispatch(updateQuantity({ id: item.id, quantity: newQuantity }));
     }
   };
