@@ -9,7 +9,14 @@ const useProducts = () => {
     const fetchProducts = async () => {
       try {
         setLoading(true);
-        const response = await fetch('https://dummyjson.com/products');
+        setError(null);
+        
+        const response = await fetch('https://dummyjson.com/products', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
         
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -17,7 +24,6 @@ const useProducts = () => {
         
         const data = await response.json();
         setProducts(data.products || []);
-        setError(null);
       } catch (err) {
         setError(err.message);
         console.error('Error fetching products:', err);
