@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './Header.css';
 
 const Header = () => {
   const totalQuantity = useSelector(state => state.cart.totalQuantity);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <header className="header">
