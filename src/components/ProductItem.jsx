@@ -11,8 +11,15 @@ const ProductItem = ({ product }) => {
     e.preventDefault();
     e.stopPropagation();
     dispatch(addToCart(product));
-    // Show success feedback
-    console.log(`${product.title} added to cart!`);
+    // Show success feedback with better UX
+    const button = e.target;
+    const originalText = button.textContent;
+    button.textContent = 'Added!';
+    button.style.backgroundColor = '#27ae60';
+    setTimeout(() => {
+      button.textContent = originalText;
+      button.style.backgroundColor = '';
+    }, 1000);
   };
 
   return (
