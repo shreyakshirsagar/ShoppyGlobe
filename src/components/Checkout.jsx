@@ -37,17 +37,22 @@ const Checkout = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsSubmitting(false);
-    setOrderPlaced(true);
-    dispatch(clearCart());
-    
-    // Redirect to home after 3 seconds
-    setTimeout(() => {
-      navigate('/');
-    }, 3000);
+    try {
+      // Simulate API call with better error handling
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      setIsSubmitting(false);
+      setOrderPlaced(true);
+      dispatch(clearCart());
+      
+      // Redirect to home after 3 seconds
+      setTimeout(() => {
+        navigate('/');
+      }, 3000);
+    } catch (error) {
+      setIsSubmitting(false);
+      alert('Order placement failed. Please try again.');
+    }
   };
 
   if (items.length === 0 && !orderPlaced) {
